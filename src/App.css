@@ -1,0 +1,162 @@
+/* --- GLOBAL RESET & LAYOUT --- */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    background-color: #f4f7f6;
+}
+
+.cam-website {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- TOP BAR STYLING --- */
+.top-bar {
+    background-color: #2c3e50; /* Dark blue/gray for a spy theme */
+    color: white;
+    padding: 20px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left; /* Left justified text */
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 60px; /* Adjust logo size */
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 3em;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+/* --- MAIN CONTENT LAYOUT (Sidebar + Grid) --- */
+.main-content-container {
+    display: flex;
+    flex-grow: 1; /* Allows this container to take up remaining vertical space */
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 300px;
+    background-color: #cccccc; /* Light background for contrast */
+    padding-top: 15px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-tab {
+    padding: 20px 20px;
+    cursor: pointer;
+    border-left: 4px solid transparent;
+    font-weight: 600;
+    font-size: 2em;
+    transition: all 0.2s ease;
+}
+
+.sidebar-tab:hover {
+    background-color: #dcdde1;
+}
+
+.sidebar-tab.active {
+    background-color: #3498db; /* Highlight color */
+    color: white;
+    border-left-color: #2980b9;
+}
+
+
+/* Cam Grid Styling */
+.cam-grid-area {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.cam-grid h2 {
+    margin-top: 0;
+    color: #34495e;
+}
+
+.cam-grid {
+    display: grid;
+    /* Create a responsive grid, aiming for 3 columns on large screens */
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 25px;
+}
+
+/* Individual Cam Item Styling (Mimicking YouTube Thumbnail) */
+
+.cam-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.thumbnail-container {
+    width: 100%;
+    /* Aspect ratio for thumbnails (e.g., 16:9 aspect ratio) */
+    padding-top: 56%; /* (Height / Width) * 100. For 16:9, this is 9/16 = 0.5625 */
+    position: relative;
+}
+
+.cam-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+    display: block;
+}
+
+.cam-item {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    /* Added to anchor the absolute position of the title */
+    position: relative; 
+}
+
+.cam-title {
+    /* Corrected from relative to absolute */
+    position: absolute; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Corrected from box to border-box */
+    box-sizing: border-box; 
+    /* Added to remove default h3 spacing causing misalignment */
+    margin: 0; 
+    padding: 10px;
+    font-size: 1em;
+    color: #ffffff;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+    /* Added to ensure title renders above the thumbnail image */
+    z-index: 10; 
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .main-content-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        overflow-x: auto; /* Allows tabs to scroll horizontally on smaller screens */
+        padding-bottom: 10px;
+    }
+    .sidebar-tab {
+        flex-shrink: 0;
+        border-left: none;
+        border-bottom: 4px solid transparent;
+    }
+}
