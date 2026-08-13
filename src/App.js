@@ -41,7 +41,7 @@ const TopBar = () => {
             {/* LEFT SECTION: Logo and Title */}
             <div className="left-content">
                 <div className="logo-container">
-                    <img src="fake-cam/logo.png" alt="Logo" className="logo" />
+                    <img src="logo.png" alt="Logo" className="logo" />
                     <span className="title">HACKED SPYCAMS</span>
                 </div>
             </div>
@@ -75,23 +75,34 @@ const TopBar = () => {
 
 
 // --- Component 2: Sidebar ---
+// --- Component 2: Sidebar ---
 const Sidebar = ({ activeTab, setActiveTab }) => {
-    const categories = ["🔥HOT", "✨NEWEST", "🌟TOP RATED", "🚿SHOWERS", "🏠HOMES", "🏫SCHOOLS"];
+    const categories = ["🔥HOT", "✨NEWEST", "🌟TOP RATED", "🚿SHOWERS", "🏠HOMES", "🏛️PUBLIC"];
+    const gifSrc = "summersale.gif"; // Ensure this path is correct
 
     return (
         <nav className="sidebar">
-            {categories.map((category) => (
-                <div
-                    key={category}
-                    className={`sidebar-tab ${activeTab === category ? 'active' : ''}`}
-                    onClick={() => setActiveTab(category)}
-                >
-                    {category}
-                </div>
-            ))}
+            {/* 1. FEATURED GIF SECTION */}
+            <div className="featured-gif-container">
+                <img src={gifSrc} alt="Summer Sale" className="sale-image" />
+            </div>
+
+            {/* 2. CATEGORY TABS SECTION */}
+            <div className="categories-list">
+                {categories.map((category) => (
+                    <div
+                        key={category}
+                        className={`sidebar-tab ${activeTab === category ? 'active' : ''}`}
+                        onClick={() => setActiveTab(category)}
+                    >
+                        {category}
+                    </div>
+                ))}
+            </div>
         </nav>
     );
 };
+
 
 // --- Component 3: Cam Grid Item ---
 const CamItem = ({ cam }) => (
