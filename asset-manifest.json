@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/fake-cam/static/css/main.3e3f6e9f.css",
-    "main.js": "/fake-cam/static/js/main.0e4f5bcd.js",
+    "main.css": "/fake-cam/static/css/main.d76ab78d.css",
+    "main.js": "/fake-cam/static/js/main.08c129d1.js",
     "static/js/453.4215e6a8.chunk.js": "/fake-cam/static/js/453.4215e6a8.chunk.js",
     "static/media/HIDDEN CHANGING ROOM.jpg": "/fake-cam/static/media/HIDDEN CHANGING ROOM.b10efa1f5e29fc53f34c.jpg",
     "static/media/HACKED SHOWERS.jpg": "/fake-cam/static/media/HACKED SHOWERS.a55914c64cf50cab5da3.jpg",
@@ -11,12 +11,12 @@
     "static/media/BEDROOM CAM.jpg": "/fake-cam/static/media/BEDROOM CAM.3e65f628da0561200f42.jpg",
     "static/media/HACKED IP CAM.jpg": "/fake-cam/static/media/HACKED IP CAM.90e0223f7af18c68e7a7.jpg",
     "index.html": "/fake-cam/index.html",
-    "main.3e3f6e9f.css.map": "/fake-cam/static/css/main.3e3f6e9f.css.map",
-    "main.0e4f5bcd.js.map": "/fake-cam/static/js/main.0e4f5bcd.js.map",
+    "main.d76ab78d.css.map": "/fake-cam/static/css/main.d76ab78d.css.map",
+    "main.08c129d1.js.map": "/fake-cam/static/js/main.08c129d1.js.map",
     "453.4215e6a8.chunk.js.map": "/fake-cam/static/js/453.4215e6a8.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3e3f6e9f.css",
-    "static/js/main.0e4f5bcd.js"
+    "static/css/main.d76ab78d.css",
+    "static/js/main.08c129d1.js"
   ]
 }
