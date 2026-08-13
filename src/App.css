@@ -13,11 +13,19 @@ body {
 
 /* --- TOP BAR STYLING --- */
 .top-bar {
-    background-color: #2c3e50; /* Dark blue/gray for a spy theme */
+    background-color: #2c3e50;
     color: white;
-    padding: 20px 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: left; /* Left justified text */
+    padding: 15px 30px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Left Content Styling (For logo/title) */
+.left-content {
+    display: flex;
+    align-items: center;
 }
 
 .logo-container {
@@ -26,52 +34,111 @@ body {
 }
 
 .logo {
-    height: 60px; /* Adjust logo size */
-    margin-right: 10px;
+    height: 50px; 
+    margin-right: 15px;
 }
 
 .title {
-    font-size: 3em;
-    font-weight: bold;
+    font-size: 1.8em; /* Slightly larger title for prominence */
+    font-weight: 700;
     letter-spacing: 1px;
 }
 
 
-/* --- MAIN CONTENT LAYOUT (Sidebar + Grid) --- */
+/* --- RIGHT ACTIONS STYLING --- */
+.right-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Tighter spacing between action items */
+}
+
+.indicator-group {
+    font-size: 0.9em;
+    background-color: rgba(255, 255, 255, 0.15); /* Subtle background for contrast */
+    padding: 6px 10px;
+    border-radius: 4px;
+}
+
+.orientation-emoji {
+    font-size: 1em;
+    margin-left: 5px;
+}
+
+
+/* --- BUTTON STYLING (Minimized & Defined) --- */
+.btn {
+    padding: 12px 12px; /* Reduced padding for conciseness */
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+/* Login Button (Text, light gray) */
+.login-btn {
+    background: transparent;
+    color: #bdc3c7; 
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+}
+
+/* Join for Free Button (White bg, black text) */
+.join-free-btn {
+    background-color: white;
+    color: #333; 
+}
+
+/* Premium Button (Red bg, white text, with glow) */
+.premium-btn {
+    background-color: #e74c3c;
+    color: white;
+    box-shadow: 0 0 15px rgba(231, 76, 60, 0.8); /* The required glow */
+}
+
+.premium-btn:hover {
+    background-color: #c0392b;
+    box-shadow: 0 0 25px rgba(231, 76, 60, 1);
+}
+
+/* Upload Button (Green) */
+.upload-btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+.upload-btn:hover {
+    background-color: #27ae60;
+}
+
+
+/* --- MAIN CONTENT LAYOUT (Grid/Sidebar) --- */
 .main-content-container {
     display: flex;
-    flex-grow: 1; /* Allows this container to take up remaining vertical space */
+    flex-grow: 1;
 }
 
 /* Sidebar Styling */
 .sidebar {
     width: 300px;
-    background-color: #cccccc; /* Light background for contrast */
+    background-color: #cccccc;
     padding-top: 15px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
 }
 
 .sidebar-tab {
-    padding: 20px 20px;
-    cursor: pointer;
-    border-left: 4px solid transparent;
+    padding: 15px 20px; /* Slightly tighter padding */
+    font-size: 1.5em; /* Smaller font in sidebar for compactness */
     font-weight: 600;
-    font-size: 2em;
-    transition: all 0.2s ease;
-}
-
-.sidebar-tab:hover {
-    background-color: #dcdde1;
 }
 
 .sidebar-tab.active {
-    background-color: #3498db; /* Highlight color */
+    background-color: #3498db;
     color: white;
     border-left-color: #2980b9;
 }
 
 
-/* Cam Grid Styling */
+/* Cam Grid Styling (Mostly unchanged, focused on efficiency) */
 .cam-grid-area {
     flex-grow: 1;
     padding: 20px;
@@ -84,12 +151,19 @@ body {
 
 .cam-grid {
     display: grid;
-    /* Create a responsive grid, aiming for 3 columns on large screens */
     grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
     gap: 25px;
 }
 
-/* Individual Cam Item Styling (Mimicking YouTube Thumbnail) */
+/* Thumbnail and Title Styling */
+.cam-item {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+    position: relative; 
+}
 
 .cam-item:hover {
     transform: translateY(-5px);
@@ -98,8 +172,7 @@ body {
 
 .thumbnail-container {
     width: 100%;
-    /* Aspect ratio for thumbnails (e.g., 16:9 aspect ratio) */
-    padding-top: 56%; /* (Height / Width) * 100. For 16:9, this is 9/16 = 0.5625 */
+    padding-top: 56%; /* Maintains 16:9 aspect ratio */
     position: relative;
 }
 
@@ -109,40 +182,26 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the container without distortion */
+    object-fit: cover;
     display: block;
 }
 
-.cam-item {
-    background-color: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease;
-    /* Added to anchor the absolute position of the title */
-    position: relative; 
-}
-
 .cam-title {
-    /* Corrected from relative to absolute */
     position: absolute; 
     bottom: 0;
     left: 0;
     width: 100%;
-    /* Corrected from box to border-box */
     box-sizing: border-box; 
-    /* Added to remove default h3 spacing causing misalignment */
     margin: 0; 
-    padding: 10px;
-    font-size: 1em;
+    padding: 8px; /* Slightly reduced padding for smaller footprint */
+    font-size: 0.9em;
     color: #ffffff;
     text-align: center;
     background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-    /* Added to ensure title renders above the thumbnail image */
     z-index: 10; 
 }
 
-/* Responsive adjustments */
+/* Responsive Adjustments */
 @media (max-width: 900px) {
     .main-content-container {
         flex-direction: column;
@@ -151,7 +210,7 @@ body {
         width: 100%;
         height: auto;
         display: flex;
-        overflow-x: auto; /* Allows tabs to scroll horizontally on smaller screens */
+        overflow-x: auto;
         padding-bottom: 10px;
     }
     .sidebar-tab {
@@ -159,4 +218,25 @@ body {
         border-left: none;
         border-bottom: 4px solid transparent;
     }
+}
+
+.live-badge {
+    position: absolute; /* Crucial for placing it relative to .thumbnail-container */
+    top: 10px;          /* Position near the top */
+    left: 10px;         /* Position near the left */
+    background-color: #e74c3c; /* Red background */
+    color: white;       /* White text */
+    padding: 4px 8px;
+    border-radius: 5px; /* Small rounded box */
+    font-size: 0.8em;
+    font-weight: bold;
+    z-index: 10;        /* Ensures it sits above the image */
+}
+
+/* Ensure the container respects absolute positioning */
+.thumbnail-container {
+    position: relative; /* MUST be set to relative for the badge to work */
+    width: 100%;
+    padding-top: 56%; 
+    overflow: hidden; /* Ensures the badge stays within bounds */
 }

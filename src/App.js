@@ -33,18 +33,50 @@ const sortCams = (cams) => {
 
 
 // --- Component 1: Top Bar ---
-const TopBar = () => (
-    <header className="top-bar">
-        <div className="logo-container">
-            <img src="logo.png" alt="Logo" className="logo" />
-            <span className="title">陌生監視器</span>
-        </div>
-    </header>
-);
+const TopBar = () => {
+    const [orientation, setOrientation] = useState('male'); // State for indicator
+
+    return (
+        <header className="top-bar">
+            {/* LEFT SECTION: Logo and Title */}
+            <div className="left-content">
+                <div className="logo-container">
+                    <img src="fake-cam/logo.png" alt="Logo" className="logo" />
+                    <span className="title">HACKED SPYCAMS</span>
+                </div>
+            </div>
+
+            {/* RIGHT SECTION: Indicators and Buttons*/}
+            <div className="right-actions">
+                
+                {/* 1. Sexual Orientation Indicator */}
+                <div className="indicator-group">
+                    <span>Orientation: </span>
+                    <span className={`orientation-emoji ${orientation}`}>
+                        {orientation === 'male' ? '♂️' : orientation === 'female' ? '♀️' : '🤝'}
+                    </span>
+                </div>
+
+                {/* 2. Login Button (Text, light gray) */}
+                <button className="btn login-btn">Login</button>
+
+                {/* 3. Join for Free Button (Rounded box, white bg, black text) */}
+                <button className="btn join-free-btn">Join for Free</button>
+
+                {/* 4. Premium Button (Red bg, white text, with glow) */}
+                <button className="btn premium-btn">Premium</button>
+
+                {/* 5. Upload Button */}
+                <button className="btn upload-btn">Upload</button>
+            </div>
+        </header>
+    );
+};
+
 
 // --- Component 2: Sidebar ---
 const Sidebar = ({ activeTab, setActiveTab }) => {
-    const categories = ["🔥熱門", "✨最新", "🌟頂級"];
+    const categories = ["🔥HOT", "✨NEWEST", "🌟TOP RATED", "🚿SHOWERS", "🏠HOMES", "🏫SCHOOLS"];
 
     return (
         <nav className="sidebar">
@@ -65,7 +97,8 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
 const CamItem = ({ cam }) => (
     <div className="cam-item">
         <div className="thumbnail-container">
-            {/* This is where the image or video player would load */}
+            <div className="live-badge">LIVE</div> 
+
             <img src={cam.mediaSrc} alt={cam.title} className="cam-thumbnail" />
         </div>
         <h3 className="cam-title">{cam.title}</h3>
@@ -73,11 +106,10 @@ const CamItem = ({ cam }) => (
 );
 
 
+
 // --- Main Application Component ---
 function App() {
-    const [activeTab, setActiveTab] = useState('🔥熱門');
-
-    // Use useMemo to ensure sorting only happens when initialCams changes
+    const [activeTab, setActiveTab] = useState('🔥HOT');
     const sortedCams = useMemo(() => sortCams(initialCams), []);
 
     return (
@@ -85,10 +117,7 @@ function App() {
             <TopBar />
 
             <div className="main-content-container">
-                {/* Left Sidebar */}
                 <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
-
-                {/* Main Content Area (Cam Grid) */}
                 <main className="cam-grid-area">
                     <h2>{activeTab} Cams</h2>
                     <div className="cam-grid">
